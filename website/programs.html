@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - STEM Starts With Us</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender: #A7AAE1;
+            --lavender-light: #c8caf0;
+            --lavender-dark: #7b7fce;
+            --sky-blue: #AEDEFC;
+            --sky-blue-light: #d4eefd;
+            --pink: #FDEDED;
+            --pink-dark: #f5c9c9;
+            --purple: #6B5B95;
+            --cream: #FDF8F3;
+            --white: #ffffff;
+            --text-dark: #4a4a6a;
+            --text-medium: #7a7a9a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+
+        .page-wrapper {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--pink) 20%, var(--white) 40%, var(--sky-blue-light) 60%, var(--white) 80%, var(--lavender-light) 100%);
+            min-height: 100vh;
+        }
+
+        .page-wrapper::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23A7AAE1' stroke-width='0.8' opacity='0.5'%3E%3Ccircle cx='20' cy='20' r='6'/%3E%3Ccircle cx='80' cy='60' r='4'/%3E%3Ccircle cx='40' cy='80' r='5'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.5; pointer-events: none; }
+        .blob-1 { width: 400px; height: 400px; background: var(--lavender-light); top: 10%; right: -100px; }
+        .blob-2 { width: 350px; height: 350px; background: var(--pink); bottom: 20%; left: -100px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 60px;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(167, 170, 225, 0.15);
+        }
+
+        .logo-section { display: flex; align-items: center; gap: 12px; cursor: pointer; transition: transform 0.3s ease; }
+        .logo-section:hover { transform: scale(1.02); }
+        .logo-img { width: 55px; height: 55px; border-radius: 16px; object-fit: cover; }
+        .logo-text { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 700; color: var(--purple); }
+        .logo-text span { color: var(--lavender-dark); }
+
+        nav { display: flex; gap: 8px; align-items: center; }
+        nav a { text-decoration: none; color: var(--text-dark); font-size: 15px; font-weight: 700; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; }
+        nav a:not(.btn-donate):hover, nav a.active { color: var(--purple); background: rgba(167, 170, 225, 0.15); }
+        .btn-donate { background: linear-gradient(135deg, var(--lavender), var(--lavender-dark)); color: white !important; padding: 12px 26px; border-radius: 50px; font-weight: 800; box-shadow: 0 4px 15px rgba(167, 170, 225, 0.4); }
+        .btn-donate:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(167, 170, 225, 0.5); }
+
+        .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 20px 60px rgba(167, 170, 225, 0.1); }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 100px 60px 80px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 52px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .page-hero h1 span { color: var(--purple); }
+
+        .page-hero p {
+            font-size: 20px;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Programs Section */
+        .programs-section {
+            padding: 60px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .program-card {
+            padding: 50px 35px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .program-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 35px 80px rgba(167, 170, 225, 0.25);
+        }
+
+        .program-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(167, 170, 225, 0.3), rgba(174, 222, 252, 0.3));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            margin: 0 auto 25px;
+            transition: transform 0.4s ease;
+        }
+
+        .program-card:hover .program-icon {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .program-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 26px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .program-card p {
+            font-size: 15px;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .coming-soon-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Stay Updated Section */
+        .updates-section {
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .updates-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 50px;
+        }
+
+        .updates-card .emoji {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .updates-card h2 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .updates-card h2 span { color: var(--purple); }
+
+        .updates-card p {
+            font-size: 17px;
+            color: var(--text-medium);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn i { font-size: 20px; }
+
+        .social-btn.instagram {
+            background: linear-gradient(135deg, #E1306C, #F77737);
+            color: white;
+        }
+
+        .social-btn.tiktok {
+            background: var(--text-dark);
+            color: white;
+        }
+
+        .social-btn.linkedin {
+            background: #0077B5;
+            color: white;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            margin: 60px;
+            padding: 70px;
+            background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
+            border-radius: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='3' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
+        }
+
+        .cta-content { position: relative; z-index: 1; }
+        .cta-emoji { font-size: 50px; margin-bottom: 15px; display: block; }
+        .cta-section h2 { font-family: 'Baloo 2', cursive; font-size: 36px; color: white; margin-bottom: 16px; }
+        .cta-section p { font-size: 18px; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        .btn-white {
+            background: white;
+            color: var(--purple);
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--purple);
+        }
+
+        /* Footer */
+        footer { background: var(--text-dark); color: white; padding: 70px 60px 35px; }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 50px; }
+        .footer-brand .logo { font-family: 'Baloo 2', cursive; font-size: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+        .footer-brand .logo img { width: 50px; height: 50px; border-radius: 14px; }
+        .footer-brand p { font-size: 15px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; margin-bottom: 20px; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { width: 46px; height: 46px; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.1); border-radius: 14px; color: white; font-size: 20px; transition: all 0.3s ease; }
+        .social-links a:hover { background: var(--lavender); transform: translateY(-4px); }
+        .footer-section h4 { font-family: 'Baloo 2', cursive; font-size: 18px; margin-bottom: 20px; }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 12px; }
+        .footer-section ul li a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.3s ease; }
+        .footer-section ul li a:hover { color: white; }
+        .footer-contact p { color: rgba(255, 255, 255, 0.7); font-size: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .footer-contact p i { color: var(--lavender-light); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 25px; text-align: center; font-size: 14px; color: rgba(255, 255, 255, 0.5); }
+
+        @media (max-width: 1024px) {
+            header { padding: 16px 30px; }
+            .page-hero { padding: 60px 30px; }
+            .page-hero h1 { font-size: 38px; }
+            .programs-section, .updates-section { padding: 60px 30px; }
+            .programs-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .cta-section { margin: 40px 30px; padding: 50px 30px; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; }
+            nav { flex-wrap: wrap; justify-content: center; }
+            .page-hero h1 { font-size: 32px; }
+            .social-buttons { flex-direction: column; align-items: center; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <header>
+            <div class="logo-section" onclick="window.location.href='index.html'">
+                <img src="/images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
+                <div class="logo-text">STEM Starts <span>With Us</span></div>
+            </div>
+            <nav>
+                <a href="about.html">Our Story</a>
+                <a href="programs.html" class="active">Programs</a>
+                <a href="contact.html">Contact</a>
+                <a href="donate.html" class="btn-donate">💜 Donate</a>
+            </nav>
+        </header>
+
+        <section class="page-hero">
+            <h1>Our <span>Programs</span> 🚀</h1>
+            <p>We're working on exciting ways to bring STEM education to kids in underserved communities!</p>
+        </section>
+
+        <section class="programs-section">
+            <div class="programs-grid">
+                <div class="program-card glass-card">
+                    <div class="program-icon">🧪</div>
+                    <h3>STEM Kits</h3>
+                    <p>Hands-on activity kits filled with fun experiments that kids can explore at home or in workshops!</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                <div class="program-card glass-card">
+                    <div class="program-icon">📚</div>
+                    <h3>STEM Storybooks</h3>
+                    <p>Engaging illustrated books that teach science concepts through fun stories and characters!</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+                <div class="program-card glass-card">
+                    <div class="program-icon">🎉</div>
+                    <h3>Events & Workshops</h3>
+                    <p>Interactive community events where kids can learn, experiment, and have fun with STEM!</p>
+                    <span class="coming-soon-badge">Coming Soon</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future: Add image/photo section here -->
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <span class="cta-emoji">💜</span>
+                <h2>Help Us Make It Happen!</h2>
+                <p>Your support helps us develop and bring these programs to kids who need them most.</p>
+                <div class="cta-buttons">
+                    <a href="donate.html" class="btn-white">Support Our Mission 💜</a>
+                    <a href="contact.html" class="btn-outline">Get In Touch ✉️</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo"><img src="/images/final_logo.png" alt="Logo">STEM Starts With Us</div>
+                    <p>Dedicated to bringing exciting STEM education to young children in underserved areas.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/stem.starts.with.us/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/stem-starts-with-us/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-envelope"></i> stemstartswithus@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Baltimore, MD</p>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>© 2024 STEM Starts With Us. All rights reserved.</p></div>
+        </footer>
+    </div>
+</body>
+</html>

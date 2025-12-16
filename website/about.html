@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - STEM Starts With Us</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender: #A7AAE1;
+            --lavender-light: #c8caf0;
+            --lavender-dark: #7b7fce;
+            --sky-blue: #AEDEFC;
+            --sky-blue-light: #d4eefd;
+            --pink: #FDEDED;
+            --pink-dark: #f5c9c9;
+            --purple: #6B5B95;
+            --cream: #FDF8F3;
+            --white: #ffffff;
+            --text-dark: #4a4a6a;
+            --text-medium: #7a7a9a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text-dark);
+            background: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Doodle background */
+        .doodle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23A7AAE1' stroke-width='1' opacity='0.3'%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3Cpath d='M60 15 L65 25 L55 25 Z'/%3E%3Crect x='75' y='70' width='12' height='12' rx='2'/%3E%3Ccircle cx='15' cy='75' r='5'/%3E%3Cpath d='M45 80 Q50 70 55 80'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 60px;
+            position: sticky;
+            top: 0;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 3px solid var(--lavender-light);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-section:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            font-family: 'Baloo 2', cursive;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .logo-text span {
+            color: var(--lavender-dark);
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 15px;
+            font-weight: 700;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:not(.btn-donate):hover,
+        nav a.active {
+            color: var(--purple);
+            background: var(--pink);
+        }
+
+        .btn-donate {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--lavender-dark) 100%);
+            color: white !important;
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(167, 170, 225, 0.4);
+        }
+
+        .btn-donate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(167, 170, 225, 0.5);
+        }
+
+        /* Page Hero - with background image */
+        .page-hero {
+            padding: 80px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--pink) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background image instead of emoji */
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .page-hero h1 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 52px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero h1 span {
+            color: var(--purple);
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section styles */
+        section {
+            padding: 100px 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--pink);
+            color: var(--purple);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            border: 2px dashed var(--pink-dark);
+        }
+
+        .section-header h2 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 42px;
+            color: var(--text-dark);
+            font-weight: 800;
+        }
+
+        .section-header h2 span {
+            color: var(--purple);
+        }
+
+        /* Story Section */
+        .story-section {
+            background: var(--white);
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .story-block:nth-child(even) {
+            direction: rtl;
+        }
+
+        .story-block:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .story-text h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 28px;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .story-text h3 span {
+            color: var(--purple);
+        }
+
+        .story-text p {
+            font-size: 17px;
+            color: var(--text-medium);
+            line-height: 1.9;
+        }
+
+        /* Story images - now using actual images */
+        .story-image {
+            background: linear-gradient(135deg, var(--lavender-light), var(--sky-blue-light));
+            border-radius: 30px;
+            padding: 10px;
+            text-align: center;
+            border: 4px solid white;
+            box-shadow: 0 15px 50px rgba(167, 170, 225, 0.2);
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 22px;
+            display: block;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: var(--sky-blue-light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            border: 3px solid var(--lavender-light);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--lavender);
+            box-shadow: 0 20px 50px rgba(167, 170, 225, 0.2);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--pink), var(--lavender-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+        }
+
+        .value-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 22px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 15px;
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: var(--cream);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            text-align: center;
+            border: 3px solid var(--lavender-light);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(167, 170, 225, 0.2);
+        }
+
+        /* Team photos - now using actual images */
+        .team-photo {
+            height: 220px;
+            background: linear-gradient(135deg, var(--lavender-light), var(--sky-blue-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 25px;
+        }
+
+        .team-info h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .team-role {
+            font-size: 14px;
+            color: var(--purple);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .team-info p {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--lavender) 0%, var(--lavender-dark) 100%);
+            text-align: center;
+            padding: 80px 60px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 40px;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--purple);
+            border: none;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Nunito', sans-serif;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 70px 60px 35px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+            max-width: 1100px;
+        }
+
+        .footer-brand .logo {
+            font-family: 'Baloo 2', cursive;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+        }
+
+        .footer-brand .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--lavender);
+            transform: translateY(-4px);
+        }
+
+        .footer-section h4 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact p i {
+            color: var(--lavender-light);
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            header { padding: 16px 30px; }
+            .page-hero, section { padding: 60px 30px; }
+            .page-hero h1 { font-size: 38px; }
+            .story-block { grid-template-columns: 1fr; gap: 30px; }
+            .story-block:nth-child(even) { direction: ltr; }
+            .story-image img { height: 250px; }
+            .values-grid, .team-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 20px; padding: 16px 20px; }
+            nav { flex-wrap: wrap; justify-content: center; }
+            .page-hero h1 { font-size: 32px; }
+            footer { padding: 50px 20px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="doodle-bg"></div>
+
+    <!-- Header -->
+        <header>
+            <div class="logo-section" onclick="window.location.href='index.html'">
+                <img src="/images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
+                <div class="logo-text">STEM Starts <span>With Us</span></div>
+            </div>
+            <nav>
+                <a href="about.html">Our Story</a>
+                <a href="programs.html" class="active">Programs</a>
+                <a href="contact.html">Contact</a>
+                <a href="donate.html" class="btn-donate">💜 Donate</a>
+            </nav>
+        </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Our <span>Story</span> ✨</h1>
+        <p>Learn about our mission to bring STEM education to every child, everywhere!</p>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="story-content">
+            <!-- How It Started -->
+            <div class="story-block">
+                <div class="story-text">
+                    <h3>How It <span>Started</span> 🌱</h3>
+                    <p>STEM Starts With Us grew from the belief that curiosity needs representation to thrive. Too many kids were never shown the many paths STEM could take or the people who walk them.</p>
+                </div>
+                <div class="story-image">
+                    <!-- REPLACE: Add your image here -->
+                    <img src="/images/stem.jpg" alt="How STEM Starts With Us began">
+                </div>
+            </div>
+
+            <!-- What We Believe -->
+            <div class="story-block">
+                <div class="story-text">
+                    <h3>What We <span>Believe</span> 💡</h3>
+                    <p>We believe representation fuels curiosity. When kids see people like them in STEM careers, confidence follows and possibility expands.</p>
+                </div>
+                <div class="story-image">
+                    <!-- REPLACE: Add your image here -->
+                    <img src="/images/group3.png" alt="Our beliefs and values">
+                </div>
+            </div>
+
+            <!-- Where We're Going -->
+            <div class="story-block">
+                <div class="story-text">
+                    <h3>Where We're <span>Going</span> 🚀</h3>
+                    <p>We’re working toward a future where every child can explore STEM careers and see themselves represented in them. As we grow, we’re expanding our programs, creating new resources, and partnering with communities to reach more kids.</p>
+                </div>
+                <div class="story-image">
+                    <!-- REPLACE: Add your image here -->
+                    <img src="/images/kids.jpg" alt="Our future vision">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="section-header">
+            <span class="section-tag">💜 Our Values</span>
+            <h2>What Guides <span>Us</span></h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🧑‍🤝‍🧑</div>
+                <h3>Representation</h3>
+                <p>STEM is for everyone. We celebrate diversity and ensure all children feel welcome and represented.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎨</div>
+                <h3>Creativity</h3>
+                <p>We make learning fun and engaging through hands-on experiments and creative exploration.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Community</h3>
+                <p>We work alongside families and communities to create lasting impact together.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="section-header">
+            <span class="section-tag">👋 Meet the Team</span>
+            <h2>The People <span>Behind</span> the Mission</h2>
+        </div>
+        <div class="team-grid">
+            <!-- Team Member 1 - Founder -->
+            <div class="team-card">
+                <div class="team-photo">
+                    <!-- REPLACE: Add founder photo here -->
+                    <img src="/images/tomi.jpeg" alt=" Co-founder">
+                </div>
+                <div class="team-info">
+                    <h3>Tomisin Adebari</h3>
+                    <div class="team-role">Co-founder (Curriculum & Programs)</div>
+                    <p>Builds and leads the STEM programs that define our mission.</p>
+                </div>
+            </div>
+
+            <!-- Team Member 2 - Programs Lead -->
+            <div class="team-card">
+                <div class="team-photo">
+                    <!-- REPLACE: Add programs lead photo here -->
+                    <img src="/images/joy.jpeg" alt="Co-Founder">
+                </div>
+                <div class="team-info">
+                    <h3>Olayimika Adeyemi</h3>
+                    <div class="team-role">Co-Founder (Operations)</div>
+                    <p>Supports logistics and helps bring our programs to life.</p>
+                </div>
+            </div>
+
+            <!-- Team Member 3 - Outreach Lead -->
+            <div class="team-card">
+                <div class="team-photo">
+                    <!-- REPLACE: Add outreach lead photo here -->
+                    <img src="/images/Tomisin.jpg" alt="Outreach Lead">
+                </div>
+                <div class="team-info">
+                    <h3>Oluwatomisin Salami</h3>
+                    <div class="team-role">Co-Founder (Social Outreach)</div>
+                    <p>Connects with communities and partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Join Our Mission! 🌟</h2>
+        <p>Help us bring STEM education to more kids. Every contribution makes a difference!</p>
+        <a href="donate.html" class="btn-white">Donate Now 💜</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="/images/final_logo.png" alt="Logo">
+                    STEM Starts With Us
+                </div>
+                <p>Dedicated to bringing exciting STEM education to young children in underserved areas.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/stem.starts.with.us/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/stem-starts-with-us/"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                </ul>
+            </div>
+            <div class="footer-section footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-envelope"></i> stemstartswithus@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Baltimore, MD</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 STEM Starts With Us. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
