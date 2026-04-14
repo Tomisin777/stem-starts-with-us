@@ -380,7 +380,7 @@
             document.getElementById('mobileOverlay').classList.remove('active');
             document.body.style.overflow = '';
         }
-        document.querySelectorAll('nav a').forEach(link => { link.addEventListener('click', closeMenu); });
+        document.querySelectorAll('nav a').forEach(link => { link.addEventListener('click', () => setTimeout(closeMenu, 300)); });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

@@ -1190,7 +1190,7 @@
 
         // Close menu on nav link click
         document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', closeMenu);
+            link.addEventListener('click', () => setTimeout(closeMenu, 300));
         });
 
         // Scroll animations
