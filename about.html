@@ -38,7 +38,7 @@
         }
 
         .page-wrapper {
-            background: linear-gradient(180deg, var(--cream) 0%, var(--pink) 12%, var(--white) 25%, var(--sky-blue-light) 40%, var(--white) 55%, var(--lavender-light) 70%, var(--white) 85%, var(--cream) 100%);
+            background: linear-gradient(180deg, var(--cream) 0%, var(--pink) 20%, var(--white) 40%, var(--sky-blue-light) 60%, var(--white) 80%, var(--lavender-light) 100%);
             min-height: 100vh;
             position: relative;
         }
@@ -78,7 +78,7 @@
 
         nav { display: flex; gap: 8px; align-items: center; }
         nav a { text-decoration: none; color: var(--text-dark); font-size: 15px; font-weight: 700; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; }
-        nav a:not(.btn-donate):hover, nav a.active:not(.btn-donate) { color: var(--purple); background: rgba(167, 170, 225, 0.15); }
+        nav a:not(.btn-donate):hover, nav a.active { color: var(--purple); background: rgba(167, 170, 225, 0.15); }
         .btn-donate { background: linear-gradient(135deg, var(--lavender), var(--lavender-dark)); color: white !important; padding: 12px 26px; border-radius: 50px; font-weight: 800; box-shadow: 0 4px 15px rgba(167, 170, 225, 0.4); }
         .btn-donate:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(167, 170, 225, 0.5); }
 
@@ -483,10 +483,10 @@
         <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
 
         <header>
-            <a class="logo-section" href="index.html">
+            <div class="logo-section" onclick="window.location.href='index.html'">
                 <img src="images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
                 <div class="logo-text">STEM Starts <span>With Us</span></div>
-            </a>
+            </div>
             <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
                 <span></span><span></span><span></span>
             </button>
