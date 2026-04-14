@@ -3,61 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - STEM Starts With Us</title>
+    <title>Get Involved | STEM Starts With Us</title>
+    <meta name="description" content="Support STEM Starts With Us! Donate, volunteer, partner, or spread the word. Help us bring hands-on STEM to more kids.">
+    <meta property="og:title" content="Get Involved | STEM Starts With Us">
+    <meta property="og:description" content="Join the movement to bring STEM to every child. Your support makes a real difference.">
+    <meta property="og:image" content="images/final_logo.png">
+    <link rel="icon" type="image/png" href="images/final_logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --lavender: #A7AAE1;
-            --lavender-light: #c8caf0;
-            --lavender-dark: #7b7fce;
-            --sky-blue: #AEDEFC;
-            --sky-blue-light: #d4eefd;
-            --pink: #FDEDED;
-            --pink-dark: #f5c9c9;
-            --purple: #6B5B95;
-            --cream: #FDF8F3;
-            --white: #ffffff;
-            --text-dark: #4a4a6a;
-            --text-medium: #7a7a9a;
+            --lavender: #A7AAE1; --lavender-light: #c8caf0; --lavender-dark: #7b7fce;
+            --sky-blue: #AEDEFC; --sky-blue-light: #d4eefd;
+            --pink: #FDEDED; --pink-dark: #f5c9c9;
+            --purple: #6B5B95; --cream: #FDF8F3; --white: #ffffff;
+            --text-dark: #4a4a6a; --text-medium: #7a7a9a;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Nunito', sans-serif; color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Nunito', sans-serif; color: var(--text-dark); line-height: 1.6; overflow-x: hidden; animation: fadeIn 0.6s ease-out; }
         html { scroll-behavior: smooth; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .page-wrapper {
             background: linear-gradient(180deg, var(--lavender-light) 0%, var(--pink) 20%, var(--white) 40%, var(--sky-blue-light) 60%, var(--white) 80%, var(--cream) 100%);
-            min-height: 100vh;
+            min-height: 100vh; position: relative;
         }
 
-        .page-wrapper::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            opacity: 0.3;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23A7AAE1' stroke-width='0.8' opacity='0.5'%3E%3Ccircle cx='20' cy='20' r='6'/%3E%3Ccircle cx='80' cy='60' r='4'/%3E%3Ccircle cx='40' cy='80' r='5'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
+        .page-wrapper::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.3; background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23A7AAE1' stroke-width='0.8' opacity='0.5'%3E%3Ccircle cx='20' cy='20' r='6'/%3E%3Ccircle cx='80' cy='60' r='4'/%3E%3Ccircle cx='40' cy='80' r='5'/%3E%3C/g%3E%3C/svg%3E"); }
         .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.5; pointer-events: none; }
         .blob-1 { width: 400px; height: 400px; background: var(--lavender-light); top: 5%; right: -100px; }
         .blob-2 { width: 350px; height: 350px; background: var(--pink); bottom: 30%; left: -100px; }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 60px;
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(167, 170, 225, 0.15);
-        }
-
-        .logo-section { display: flex; align-items: center; gap: 12px; cursor: pointer; transition: transform 0.3s ease; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 16px 60px; position: sticky; top: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); z-index: 100; border-bottom: 1px solid rgba(167, 170, 225, 0.15); }
+        .logo-section { display: flex; align-items: center; gap: 12px; cursor: pointer; transition: transform 0.3s ease; text-decoration: none; }
         .logo-section:hover { transform: scale(1.02); }
         .logo-img { width: 55px; height: 55px; border-radius: 16px; object-fit: cover; }
         .logo-text { font-family: 'Baloo 2', cursive; font-size: 22px; font-weight: 700; color: var(--purple); }
@@ -65,285 +44,68 @@
 
         nav { display: flex; gap: 8px; align-items: center; }
         nav a { text-decoration: none; color: var(--text-dark); font-size: 15px; font-weight: 700; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; }
-        nav a:not(.btn-donate):hover { color: var(--purple); background: rgba(167, 170, 225, 0.15); }
+        nav a:not(.btn-donate):hover, nav a.active:not(.btn-donate) { color: var(--purple); background: rgba(167, 170, 225, 0.15); }
         .btn-donate { background: linear-gradient(135deg, var(--lavender), var(--lavender-dark)); color: white !important; padding: 12px 26px; border-radius: 50px; font-weight: 800; box-shadow: 0 4px 15px rgba(167, 170, 225, 0.4); }
-        .btn-donate:hover, .btn-donate.active { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(167, 170, 225, 0.5); background: linear-gradient(135deg, var(--purple), var(--lavender-dark)); }
+        .btn-donate:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(167, 170, 225, 0.5); }
+        .btn-donate.active { background: linear-gradient(135deg, var(--purple), var(--lavender-dark)); }
+
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 200; background: none; border: none; }
+        .hamburger span { width: 28px; height: 3px; background: var(--purple); border-radius: 3px; transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
         .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 20px 60px rgba(167, 170, 225, 0.1); }
 
-        /* Page Hero */
-        .page-hero {
-            padding: 100px 60px 80px;
-            text-align: center;
-        }
-
-        .page-hero h1 {
-            font-family: 'Baloo 2', cursive;
-            font-size: 52px;
-            color: var(--text-dark);
-            margin-bottom: 16px;
-        }
-
+        .page-hero { padding: 100px 60px 80px; text-align: center; position: relative; z-index: 2; }
+        .page-hero h1 { font-family: 'Baloo 2', cursive; font-size: 52px; color: var(--text-dark); margin-bottom: 16px; }
         .page-hero h1 span { color: var(--purple); }
+        .page-hero p { font-size: 20px; color: var(--text-medium); max-width: 600px; margin: 0 auto; }
 
-        .page-hero p {
-            font-size: 20px;
-            color: var(--text-medium);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* What Your Gift Supports */
-        .impact-section {
-            padding: 60px;
-        }
-
-        .impact-card {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px;
-            text-align: center;
-        }
-
-        .section-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(253, 237, 237, 0.8);
-            color: var(--purple);
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 800;
-            margin-bottom: 25px;
-        }
-
-        .impact-card h2 {
-            font-family: 'Baloo 2', cursive;
-            font-size: 36px;
-            color: var(--text-dark);
-            margin-bottom: 30px;
-        }
-
-        .impact-card h2 span { color: var(--purple); }
-
-        .impact-icons {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .impact-item {
-            text-align: center;
-        }
-
-        .impact-item .icon {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, rgba(167, 170, 225, 0.3), rgba(174, 222, 252, 0.3));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            margin: 0 auto 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .impact-item:hover .icon {
-            transform: scale(1.1) rotate(-5deg);
-        }
-
-        .impact-item span {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .impact-card > p {
-            font-size: 17px;
-            color: var(--text-medium);
-            line-height: 1.8;
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        /* Donate Section */
-        .donate-section {
-            padding: 60px;
-            text-align: center;
-        }
-
-        .donate-card {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 50px;
-        }
-
-        .donate-card .emoji {
-            font-size: 60px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .donate-card h2 {
-            font-family: 'Baloo 2', cursive;
-            font-size: 32px;
-            color: var(--text-dark);
-            margin-bottom: 16px;
-        }
-
-        .donate-card > p {
-            font-size: 17px;
-            color: var(--text-medium);
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .btn-donate-main {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
-            color: white;
-            border: none;
-            padding: 20px 50px;
-            border-radius: 50px;
-            font-size: 20px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Nunito', sans-serif;
-            box-shadow: 0 8px 30px rgba(167, 170, 225, 0.4);
-        }
-
-        .btn-donate-main:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 45px rgba(167, 170, 225, 0.5);
-        }
-
-        .donate-note {
-            margin-top: 25px;
-            font-size: 14px;
-            color: var(--text-medium);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .donate-note i {
-            color: var(--lavender-dark);
-        }
-
-        /* Other Ways Section */
-        .other-ways-section {
-            padding: 80px 60px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-header h2 {
-            font-family: 'Baloo 2', cursive;
-            font-size: 36px;
-            color: var(--text-dark);
-        }
-
+        .section-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(253, 237, 237, 0.8); color: var(--purple); padding: 10px 24px; border-radius: 50px; font-size: 14px; font-weight: 800; margin-bottom: 25px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-family: 'Baloo 2', cursive; font-size: 36px; color: var(--text-dark); }
         .section-header h2 span { color: var(--purple); }
 
-        .ways-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+        /* Impact preview */
+        .impact-section { padding: 60px; position: relative; z-index: 2; }
+        .impact-card { max-width: 800px; margin: 0 auto; padding: 50px; text-align: center; }
+        .impact-card h2 { font-family: 'Baloo 2', cursive; font-size: 36px; color: var(--text-dark); margin-bottom: 30px; }
+        .impact-card h2 span { color: var(--purple); }
+        .impact-icons { display: flex; justify-content: center; gap: 50px; margin-bottom: 30px; flex-wrap: wrap; }
+        .impact-item { text-align: center; }
+        .impact-item .icon { width: 90px; height: 90px; background: linear-gradient(135deg, rgba(167, 170, 225, 0.3), rgba(174, 222, 252, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 45px; margin: 0 auto 12px; transition: transform 0.3s ease; }
+        .impact-item:hover .icon { transform: scale(1.1) rotate(-5deg); }
+        .impact-item span { font-size: 15px; font-weight: 700; color: var(--text-dark); }
+        .impact-card > p { font-size: 17px; color: var(--text-medium); line-height: 1.8; max-width: 550px; margin: 0 auto; }
 
-        .way-card {
-            padding: 35px 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
+        /* Ways to Help */
+        .ways-section { padding: 80px 60px; position: relative; z-index: 2; }
+        .ways-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; max-width: 1000px; margin: 0 auto; }
+        .way-card { padding: 35px 25px; text-align: center; transition: all 0.3s ease; }
+        .way-card:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(167, 170, 225, 0.2); }
+        .way-icon { width: 80px; height: 80px; background: linear-gradient(135deg, rgba(253, 237, 237, 0.8), rgba(167, 170, 225, 0.3)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 38px; margin: 0 auto 18px; transition: transform 0.4s ease; }
+        .way-card:hover .way-icon { transform: scale(1.15) rotate(-5deg); }
+        .way-card h4 { font-family: 'Baloo 2', cursive; font-size: 20px; color: var(--text-dark); margin-bottom: 10px; }
+        .way-card p { font-size: 14px; color: var(--text-medium); line-height: 1.7; }
 
-        .way-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 60px rgba(167, 170, 225, 0.2);
-        }
+        /* Contact CTA card */
+        .contact-cta { padding: 40px 60px 80px; position: relative; z-index: 2; }
+        .contact-cta-card { max-width: 600px; margin: 0 auto; padding: 50px; text-align: center; }
+        .contact-cta-card .emoji { font-size: 60px; margin-bottom: 20px; display: block; }
+        .contact-cta-card h2 { font-family: 'Baloo 2', cursive; font-size: 32px; color: var(--text-dark); margin-bottom: 16px; }
+        .contact-cta-card > p { font-size: 17px; color: var(--text-medium); margin-bottom: 30px; line-height: 1.8; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--lavender), var(--lavender-dark)); color: white; border: none; padding: 18px 42px; border-radius: 50px; font-size: 18px; font-weight: 800; cursor: pointer; transition: all 0.3s ease; font-family: 'Nunito', sans-serif; box-shadow: 0 8px 30px rgba(167, 170, 225, 0.4); text-decoration: none; }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 45px rgba(167, 170, 225, 0.5); }
+        .donate-note { margin-top: 20px; font-size: 14px; color: var(--text-medium); display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .donate-note i { color: var(--lavender-dark); }
 
-        .way-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(253, 237, 237, 0.8), rgba(167, 170, 225, 0.3));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            margin: 0 auto 18px;
-        }
-
-        .way-card h4 {
-            font-family: 'Baloo 2', cursive;
-            font-size: 20px;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-        }
-
-        .way-card p {
-            font-size: 14px;
-            color: var(--text-medium);
-            line-height: 1.7;
-        }
-
-        /* Thank You Section */
-        .thank-you-section {
-            padding: 80px 60px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
-            margin: 60px;
-            border-radius: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .thank-you-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='3' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E");
-        }
-
-        .thank-you-section .emoji {
-            font-size: 60px;
-            margin-bottom: 20px;
-            display: block;
-            position: relative;
-            z-index: 1;
-        }
-
-        .thank-you-section h2 {
-            font-family: 'Baloo 2', cursive;
-            font-size: 36px;
-            color: white;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .thank-you-section p {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 550px;
-            margin: 0 auto;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-        }
+        /* Thank You */
+        .thank-you-section { padding: 80px 60px; text-align: center; background: linear-gradient(135deg, var(--lavender), var(--lavender-dark)); margin: 60px; border-radius: 40px; position: relative; overflow: hidden; z-index: 2; }
+        .thank-you-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='3' fill='%23ffffff' fill-opacity='0.1'/%3E%3C/svg%3E"); }
+        .thank-you-section .emoji { font-size: 60px; margin-bottom: 20px; display: block; position: relative; z-index: 1; }
+        .thank-you-section h2 { font-family: 'Baloo 2', cursive; font-size: 36px; color: white; margin-bottom: 16px; position: relative; z-index: 1; }
+        .thank-you-section p { font-size: 18px; color: rgba(255, 255, 255, 0.9); max-width: 550px; margin: 0 auto; line-height: 1.8; position: relative; z-index: 1; }
 
         /* Footer */
         footer { background: var(--text-dark); color: white; padding: 70px 60px 35px; }
@@ -365,21 +127,26 @@
 
         @media (max-width: 1024px) {
             header { padding: 16px 30px; }
-            .page-hero { padding: 60px 30px; }
-            .page-hero h1 { font-size: 38px; }
-            .impact-section, .donate-section, .other-ways-section { padding: 60px 30px; }
+            .page-hero { padding: 60px 30px; } .page-hero h1 { font-size: 38px; }
+            .impact-section, .ways-section, .contact-cta { padding: 60px 30px; }
             .impact-icons { gap: 30px; }
-            .ways-grid { grid-template-columns: 1fr; max-width: 300px; }
+            .ways-grid { grid-template-columns: repeat(2, 1fr); max-width: 500px; }
             .thank-you-section { margin: 40px 30px; padding: 60px 30px; }
             .footer-content { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 20px; }
-            nav { flex-wrap: wrap; justify-content: center; }
+            header { padding: 16px 20px; }
+            .hamburger { display: flex; }
+            nav { position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh; background: white; flex-direction: column; justify-content: center; align-items: center; gap: 16px; transition: right 0.4s ease; box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1); z-index: 150; }
+            nav.open { right: 0; }
+            nav a { font-size: 18px; padding: 14px 30px; }
+            .mobile-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 140; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+            .mobile-overlay.active { opacity: 1; pointer-events: all; }
             .page-hero h1 { font-size: 32px; }
-            .impact-card, .donate-card { padding: 35px 25px; }
+            .impact-card, .contact-cta-card { padding: 35px 25px; }
             .impact-icons { flex-direction: column; gap: 25px; }
+            .ways-grid { grid-template-columns: 1fr; max-width: 300px; }
         }
     </style>
 </head>
@@ -387,13 +154,17 @@
     <div class="page-wrapper">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
 
         <header>
-            <div class="logo-section" onclick="window.location.href='index.html'">
-                <img src="/images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
+            <a class="logo-section" href="index.html">
+                <img src="images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
                 <div class="logo-text">STEM Starts <span>With Us</span></div>
-            </div>
-            <nav>
+            </a>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="mainNav">
                 <a href="about.html">Our Story</a>
                 <a href="programs.html">Programs</a>
                 <a href="contact.html">Contact</a>
@@ -402,15 +173,15 @@
         </header>
 
         <section class="page-hero">
-            <h1>Support Our <span>Mission</span> 💜</h1>
-            <p>Your generosity helps us bring exciting STEM education to kids who need it most!</p>
+            <h1>Join the <span>Movement</span> 💜</h1>
+            <p>Every bit of support, big or small, helps us bring STEM to kids who need it most.</p>
         </section>
 
-        <!-- What Your Gift Supports -->
+        <!-- Impact -->
         <section class="impact-section">
             <div class="impact-card glass-card">
                 <span class="section-tag">✨ Your Impact</span>
-                <h2>What Your Gift <span>Supports</span></h2>
+                <h2>What Your Support <span>Makes Possible</span></h2>
                 <div class="impact-icons">
                     <div class="impact-item">
                         <div class="icon">🧪</div>
@@ -424,67 +195,74 @@
                         <div class="icon">🎉</div>
                         <span>Events</span>
                     </div>
+                    <div class="impact-item">
+                        <div class="icon">🎙️</div>
+                        <span>Podcasts</span>
+                    </div>
                 </div>
-                <p>Your donation helps us develop and share these programs with kids in underserved communities who need them most.</p>
+                <p>Your support helps us develop kits, publish storybooks, host workshops, and build resources for the kids and communities who need them most.</p>
             </div>
         </section>
 
-        <!-- Donate Section -->
-        <section class="donate-section">
-            <div class="donate-card glass-card">
-                <span class="emoji">💜</span>
-                <h2>Every Gift Matters</h2>
-                <p>No matter the size, your contribution makes a real difference in a child's life. Thank you for believing in our mission!</p>
-                <button class="btn-donate-main" onclick="window.open('YOUR_DONATION_LINK_HERE', '_blank')">
-                    💜 Donate Now
-                </button>
-                <p class="donate-note">
-                    <i class="fas fa-heart"></i> 100% goes directly to our programs
-                </p>
-            </div>
-        </section>
-
-        <!-- Other Ways Section -->
-        <section class="other-ways-section">
+        <!-- Ways to Help -->
+        <section class="ways-section">
             <div class="section-header">
-                <span class="section-tag">🤝 More Ways to Help</span>
-                <h2>Other Ways to <span>Support</span></h2>
+                <span class="section-tag">🤝 Ways to Help</span>
+                <h2>How You Can <span>Get Involved</span></h2>
             </div>
             <div class="ways-grid">
+                <div class="way-card glass-card">
+                    <div class="way-icon">💜</div>
+                    <h4>Donate</h4>
+                    <p>Financial contributions directly fund our programs and reach more kids.</p>
+                </div>
                 <div class="way-card glass-card">
                     <div class="way-icon">🙋</div>
                     <h4>Volunteer</h4>
                     <p>Share your time and skills to help run workshops and community events.</p>
                 </div>
                 <div class="way-card glass-card">
-                    <div class="way-icon">🎁</div>
-                    <h4>Donate Supplies</h4>
-                    <p>Contribute science materials, books, or equipment for our programs.</p>
+                    <div class="way-icon">🤝</div>
+                    <h4>Partner</h4>
+                    <p>Schools, businesses, and organizations, let's build together.</p>
                 </div>
                 <div class="way-card glass-card">
                     <div class="way-icon">📣</div>
                     <h4>Spread the Word</h4>
-                    <p>Follow us on social media and share our mission with others.</p>
+                    <p>Follow us on social media and share our mission with your network.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Thank You Section -->
+        <!-- Contact CTA -->
+        <section class="contact-cta">
+            <div class="contact-cta-card glass-card">
+                <span class="emoji">✉️</span>
+                <h2>Ready to Help?</h2>
+                <p>We're setting up our donation page soon. In the meantime, reach out to us directly!</p>
+                <a href="contact.html" class="btn-primary">Contact Us 💌</a>
+                <p class="donate-note">
+                    <i class="fas fa-heart"></i> Donation page coming soon. 100% goes to programs
+                </p>
+            </div>
+        </section>
+
+        <!-- Thank You -->
         <section class="thank-you-section">
             <span class="emoji">🙏</span>
             <h2>Thank You!</h2>
-            <p>Every donation helps us inspire more young minds to explore the wonders of STEM. Together, we're building a brighter future!</p>
+            <p>Every bit of support helps us reach more kids and get them excited about STEM. Together, we're building something special, one curious kid at a time.</p>
         </section>
 
         <footer>
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="logo"><img src="/images/final_logo.png" alt="Logo">STEM Starts With Us</div>
-                    <p>Dedicated to bringing exciting STEM education to young children in underserved areas.</p>
+                    <div class="logo"><img src="images/final_logo.png" alt="Logo">STEM Starts With Us</div>
+                    <p>Three Nigerian women, one mission: bring exciting STEM education to every child who needs it.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/stem.starts.with.us/"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/stem-starts-with-us/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/stem.starts.with.us/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/stem-starts-with-us/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -502,8 +280,16 @@
                     <p><i class="fas fa-map-marker-alt"></i> Baltimore, MD</p>
                 </div>
             </div>
-            <div class="footer-bottom"><p>© 2024 STEM Starts With Us. All rights reserved.</p></div>
+            <div class="footer-bottom"><p>© 2025 STEM Starts With Us. All rights reserved.</p></div>
         </footer>
     </div>
+
+    <script>
+        function toggleMenu() { document.getElementById('hamburger').classList.toggle('active'); document.getElementById('mainNav').classList.toggle('open'); document.getElementById('mobileOverlay').classList.toggle('active'); document.body.style.overflow = document.getElementById('mainNav').classList.contains('open') ? 'hidden' : ''; }
+        function closeMenu() { document.getElementById('hamburger').classList.remove('active'); document.getElementById('mainNav').classList.remove('open'); document.getElementById('mobileOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+        document.querySelectorAll('nav a').forEach(link => { link.addEventListener('click', closeMenu); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; } }); }, { threshold: 0.1 });
+        document.querySelectorAll('.glass-card').forEach((el, i) => { el.style.opacity = '0'; el.style.transform = 'translateY(30px)'; el.style.transition = `all 0.6s ease ${i * 0.06}s`; observer.observe(el); });
+    </script>
 </body>
 </html>

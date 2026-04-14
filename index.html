@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEM Starts With Us</title>
+    <title>STEM Starts With Us | Inspiring the Next Generation of Innovators</title>
+    <meta name="description" content="Three Nigerian women who met at Harvard are on a mission to bring hands-on STEM education to kids who don't always get the chance.">
+    <meta property="og:title" content="STEM Starts With Us | Inspiring the Next Generation">
+    <meta property="og:description" content="We're building a world where every child can explore STEM and see themselves in it. Through kits, storybooks, workshops, and community. STEM starts with all of us.">
+    <meta property="og:image" content="images/final_logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stemstartswithus.com">
+    <link rel="icon" type="image/png" href="images/final_logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -37,6 +44,16 @@
 
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Page load animation */
+        body {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Seamless flowing background */
@@ -89,6 +106,7 @@
             gap: 12px;
             cursor: pointer;
             transition: transform 0.3s ease;
+            text-decoration: none;
         }
 
         .logo-section:hover { transform: scale(1.02); }
@@ -125,7 +143,8 @@
             transition: all 0.3s ease;
         }
 
-        nav a:not(.btn-donate):hover {
+        nav a:not(.btn-donate):hover,
+        nav a.active:not(.btn-donate) {
             color: var(--purple);
             background: rgba(167, 170, 225, 0.15);
         }
@@ -144,13 +163,45 @@
             box-shadow: 0 8px 25px rgba(167, 170, 225, 0.5);
         }
 
-        /* Hero Section */
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 200;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--purple);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+
+        /* Hero Section - Story First */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            padding: 100px 60px 150px;
+            padding: 100px 60px 120px;
             position: relative;
         }
 
@@ -205,10 +256,10 @@
 
         .hero-content h1 {
             font-family: 'Baloo 2', cursive;
-            font-size: 56px;
+            font-size: 52px;
             color: var(--text-dark);
             margin-bottom: 20px;
-            line-height: 1.1;
+            line-height: 1.15;
         }
 
         .hero-content h1 span {
@@ -229,7 +280,12 @@
             color: var(--text-medium);
             margin-bottom: 35px;
             line-height: 1.8;
-            max-width: 480px;
+            max-width: 500px;
+        }
+
+        .hero-content p strong {
+            color: var(--text-dark);
+            font-weight: 800;
         }
 
         .hero-buttons {
@@ -293,6 +349,7 @@
             width: 100%;
             height: auto;
             border-radius: 20px;
+            object-fit: cover;
         }
 
         .float-icon {
@@ -331,7 +388,7 @@
             padding: 0 60px;
             position: relative;
             z-index: 2;
-            margin-top: -80px;
+            margin-top: -60px;
         }
 
         .mission-card {
@@ -369,46 +426,8 @@
             line-height: 1.9;
         }
 
-        /* Stats Row */
-        .stats-section {
-            padding: 60px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 35px 45px;
-            min-width: 200px;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 70px rgba(167, 170, 225, 0.2);
-        }
-
-        .stat-icon { font-size: 50px; margin-bottom: 15px; display: block; }
-
-        .stat-number {
-            font-family: 'Baloo 2', cursive;
-            font-size: 42px;
-            font-weight: 800;
-            color: var(--purple);
-        }
-
-        .stat-label {
-            font-size: 15px;
-            color: var(--text-medium);
-            font-weight: 700;
-        }
-
-        /* Programs Section */
-        .programs-section {
+        /* Who is "Us" Section */
+        .us-section {
             padding: 100px 60px;
             position: relative;
             z-index: 2;
@@ -431,9 +450,68 @@
             font-size: 18px;
             color: var(--text-medium);
             margin-top: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .programs-grid {
+        .us-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .us-card {
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .us-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 70px rgba(167, 170, 225, 0.2);
+        }
+
+        .us-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, rgba(167, 170, 225, 0.2), rgba(174, 222, 252, 0.2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            margin: 0 auto 18px;
+            transition: transform 0.4s ease;
+        }
+
+        .us-card:hover .us-icon {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .us-card h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 22px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .us-card p {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Ecosystem Section */
+        .ecosystem-section {
+            padding: 100px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ecosystem-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
@@ -441,7 +519,7 @@
             margin: 0 auto;
         }
 
-        .program-card {
+        .ecosystem-card {
             padding: 45px 35px;
             text-align: center;
             transition: all 0.4s ease;
@@ -449,7 +527,7 @@
             overflow: hidden;
         }
 
-        .program-card::before {
+        .ecosystem-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -459,12 +537,12 @@
             background: linear-gradient(90deg, var(--lavender), var(--sky-blue), var(--pink-dark));
         }
 
-        .program-card:hover {
+        .ecosystem-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 35px 80px rgba(167, 170, 225, 0.25);
         }
 
-        .program-icon-wrap {
+        .ecosystem-icon-wrap {
             width: 100px;
             height: 100px;
             background: linear-gradient(135deg, rgba(167, 170, 225, 0.2), rgba(174, 222, 252, 0.2));
@@ -477,34 +555,56 @@
             transition: transform 0.4s ease;
         }
 
-        .program-card:hover .program-icon-wrap {
+        .ecosystem-card:hover .ecosystem-icon-wrap {
             transform: scale(1.15) rotate(-5deg);
         }
 
-        .coming-badge {
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
-            color: white;
-            padding: 6px 45px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            transform: rotate(45deg);
-        }
-
-        .program-card h3 {
+        .ecosystem-card h3 {
             font-family: 'Baloo 2', cursive;
             font-size: 24px;
             color: var(--text-dark);
             margin-bottom: 12px;
         }
 
-        .program-card p {
+        .ecosystem-card p {
             font-size: 15px;
             color: var(--text-medium);
             line-height: 1.7;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 800;
+            margin-top: 16px;
+        }
+
+        .status-building {
+            background: linear-gradient(135deg, var(--lavender), var(--lavender-dark));
+            color: white;
+        }
+
+        .status-building::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .status-coming {
+            background: rgba(167, 170, 225, 0.2);
+            color: var(--purple);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
         }
 
         /* FAQ Section */
@@ -564,6 +664,7 @@
             color: white;
             font-size: 22px;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .faq-item.active .faq-toggle {
@@ -765,20 +866,66 @@
             header { padding: 16px 30px; }
             .hero { grid-template-columns: 1fr; padding: 60px 30px 100px; }
             .hero-content h1 { font-size: 42px; }
-            .mission-section, .programs-section, .faq-section { padding: 60px 30px; }
+            .mission-section, .us-section, .ecosystem-section, .faq-section { padding: 60px 30px; }
             .cta-section { margin: 40px 30px; padding: 60px 30px; }
-            .programs-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .us-grid { grid-template-columns: repeat(2, 1fr); }
+            .ecosystem-grid { grid-template-columns: 1fr; max-width: 400px; }
             .footer-content { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 20px; }
-            nav { flex-wrap: wrap; justify-content: center; }
+            header { padding: 16px 20px; }
+
+            .hamburger { display: flex; }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+                transition: right 0.4s ease;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+                z-index: 150;
+            }
+
+            nav.open {
+                right: 0;
+            }
+
+            nav a {
+                font-size: 18px;
+                padding: 14px 30px;
+            }
+
+            .mobile-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                z-index: 140;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.4s ease;
+            }
+
+            .mobile-overlay.active {
+                opacity: 1;
+                pointer-events: all;
+            }
+
             .hero-content h1 { font-size: 34px; }
             .hero-content h1 span::after { display: none; }
             .hero-buttons { flex-direction: column; }
-            .stats-section { gap: 20px; }
-            .stat-card { min-width: 150px; padding: 25px 30px; }
+            .us-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
             .cta-buttons { flex-direction: column; align-items: center; }
             .float-icon { display: none; }
         }
@@ -791,29 +938,37 @@
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
 
+        <!-- Mobile overlay -->
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
+
         <!-- Header -->
-           <header>
-            <div class="logo-section" onclick="window.location.href='index.html'">
-                <img src="/images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
+        <header>
+            <a class="logo-section" href="index.html">
+                <img src="images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
                 <div class="logo-text">STEM Starts <span>With Us</span></div>
-            </div>
-            <nav>
+            </a>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="mainNav">
                 <a href="about.html">Our Story</a>
-                <a href="programs.html" class="active">Programs</a>
+                <a href="programs.html">Programs</a>
                 <a href="contact.html">Contact</a>
                 <a href="donate.html" class="btn-donate">💜 Donate</a>
             </nav>
         </header>
 
-        <!-- Hero Section -->
-        <section class="hero">
+        <!-- Hero Section - Story First -->
+        <section class="hero" id="hero">
             <div class="hero-content">
-                <div class="hero-badge">🚀 Inspiring Future Innovators!</div>
-                <h1>Empowering Young Minds in <span>STEM</span></h1>
-                <p>Through career exploration and hands-on learning, we help kids see themselves represented in STEM.</p>
+                <div class="hero-badge">🌍 Born from a Question at Harvard</div>
+                <h1>What If Every Kid Had <span>This Chance</span>?</h1>
+                <p>Three Nigerian women met at a Harvard summer program and saw what was possible when kids get into STEM early. <strong>We asked: how do we give that to every child?</strong> That question became STEM Starts With Us.</p>
                 <div class="hero-buttons">
-                    <a href="donate.html" class="btn-primary">Join Our Mission ✨</a>
-                    <a href="about.html" class="btn-secondary">Learn More 📖</a>
+                    <a href="about.html" class="btn-primary">Read Our Story 📖</a>
+                    <a href="programs.html" class="btn-secondary">See What We're Building 🚀</a>
                 </div>
             </div>
             <div class="hero-illustration">
@@ -822,7 +977,7 @@
                     <div class="float-icon float-icon-2">🤖</div>
                     <div class="float-icon float-icon-3">💡</div>
                     <div class="float-icon float-icon-4">🌱</div>
-                    <img src="/images/final_logo.png" alt="STEM Starts With Us">
+                    <img src="images/group3.png" alt="STEM Starts With Us team">
                 </div>
             </div>
         </section>
@@ -831,61 +986,91 @@
         <section class="mission-section">
             <div class="mission-card glass-card">
                 <span class="section-tag">🎯 Our Mission</span>
-                <h2>Building <span>Curious Minds</span></h2>
-                <p>We believe curiosity grows when kids feel seen. Through hands-on activities and career exploration, we help young learners discover STEM and imagine themselves in it.🔬✨</p>
+                <h2>Sparking Curiosity, One Kid <span>at a Time</span></h2>
+                <p>We believe every child deserves to see someone who looks like them in STEM. Through hands-on kits, storybooks, workshops, and community, we're making sure they do. 🔬✨</p>
             </div>
         </section>
 
-        <!-- Stats Section -->
-        <!--section class="stats-section">
-            <div class="stat-card glass-card">
-                <span class="stat-icon">🧒</span>
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Kids Inspired</div>
-            </div>
-            <div class="stat-card glass-card">
-                <span class="stat-icon">🔬</span>
-                <div class="stat-number">20+</div>
-                <div class="stat-label">STEM Kits</div>
-            </div>
-            <div class="stat-card glass-card">
-                <span class="stat-icon">🏫</span>
-                <div class="stat-number">15+</div>
-                <div class="stat-label">Communities</div>
-            </div>
-        </section-->
-
-        <!-- Programs Section -->
-        <section class="programs-section">
+        <!-- Who is "Us" Section -->
+        <section class="us-section">
             <div class="section-header">
-                <span class="section-tag">✨ What We Do</span>
-                <h2>Our <span>Programs</span></h2>
-                <p>Fun ways we bring STEM to life for kids!</p>
+                <span class="section-tag">💜 Who Is "Us"?</span>
+                <h2>STEM Starts With <span>All of Us</span></h2>
+                <p>"Us" isn't just the three of us. It's everyone who believes curiosity deserves a chance.</p>
             </div>
-            <div class="programs-grid">
-                <div class="program-card glass-card">
-                    <span class="coming-badge">Coming Soon</span>
-                    <div class="program-icon-wrap">🔬</div>
-                    <h3>STEM Workshops</h3>
-                    <p>Hands-on learning adventures where kids explore cool experiments and discover amazing new things!</p>
+            <div class="us-grid">
+                <div class="us-card glass-card">
+                    <div class="us-icon">👨‍👩‍👧</div>
+                    <h3>Parents</h3>
+                    <p>Who want more opportunities for their children</p>
                 </div>
-                <div class="program-card glass-card">
-                    <span class="coming-badge">Coming Soon</span>
-                    <div class="program-icon-wrap">🧩</div>
+                <div class="us-card glass-card">
+                    <div class="us-icon">👩‍🏫</div>
+                    <h3>Teachers</h3>
+                    <p>Who inspire the next generation every day</p>
+                </div>
+                <div class="us-card glass-card">
+                    <div class="us-icon">🧑‍🔬</div>
+                    <h3>Mentors</h3>
+                    <p>Who show kids what's possible in STEM</p>
+                </div>
+                <div class="us-card glass-card">
+                    <div class="us-icon">🏘️</div>
+                    <h3>Communities</h3>
+                    <p>Who come together to lift up every child</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ecosystem Section -->
+        <section class="ecosystem-section">
+            <div class="section-header">
+                <span class="section-tag">✨ What We're Building</span>
+                <h2>Our <span>Programs</span></h2>
+                <p>We're working on a lot! Here's what we're building to get STEM into more kids' hands.</p>
+            </div>
+            <div class="ecosystem-grid">
+                <div class="ecosystem-card glass-card">
+                    <div class="ecosystem-icon-wrap">🧩</div>
                     <h3>STEM Kits</h3>
-                    <p>Take-home activity kits packed with exciting experiments kids can do at home with their families!</p>
+                    <p>Hands-on activity kits packed with exciting experiments kids can do at home with their families.</p>
+                    <span class="status-badge status-building">In Development</span>
                 </div>
-                <div class="program-card glass-card">
-            <span class="coming-badge">Coming Soon</span>
-            <div class="program-icon-wrap">📘</div>
-            <h3>STEM Storybook</h3>
-            <p>A children’s book featuring diverse characters in STEM careers, helping kids see themselves in science and beyond.</p>
-        </div>
-    </div>
-</section>
+                <div class="ecosystem-card glass-card">
+                    <div class="ecosystem-icon-wrap">📘</div>
+                    <h3>STEM Storybooks</h3>
+                    <p>Children's books with characters that look like them in STEM careers, so kids can see themselves in science.</p>
+                    <span class="status-badge status-building">In Development</span>
+                </div>
+                <div class="ecosystem-card glass-card">
+                    <div class="ecosystem-icon-wrap">🔬</div>
+                    <h3>Workshops</h3>
+                    <p>Fun community events where kids get to learn, try experiments, and find out what they love about STEM.</p>
+                    <span class="status-badge status-building">In Development</span>
+                </div>
+                <div class="ecosystem-card glass-card">
+                    <div class="ecosystem-icon-wrap">🎙️</div>
+                    <h3>Interviews & Podcasts</h3>
+                    <p>Conversations with STEM professionals to inspire kids and show them real career paths.</p>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+                <div class="ecosystem-card glass-card">
+                    <div class="ecosystem-icon-wrap">📚</div>
+                    <h3>Student Resources</h3>
+                    <p>Learning materials, activities, and guides for students, parents, and teachers.</p>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+                <div class="ecosystem-card glass-card">
+                    <div class="ecosystem-icon-wrap">🤝</div>
+                    <h3>Mentorship</h3>
+                    <p>Connecting kids with STEM role models who look like them and share their journey.</p>
+                    <span class="status-badge status-coming">Coming Soon</span>
+                </div>
+            </div>
+        </section>
 
         <!-- FAQ Section -->
-        <section class="faq-section">
+        <section class="faq-section" id="faq">
             <div class="section-header">
                 <span class="section-tag">💭 Questions?</span>
                 <h2>Frequently <span>Asked</span></h2>
@@ -897,7 +1082,7 @@
                         <h3><span class="faq-emoji">🎯</span> Why is STEM Education Important?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer">STEM education helps kids become creative problem solvers and critical thinkers! It prepares them for exciting future careers and teaches them skills they'll use every day.</div>
+                    <div class="faq-answer">STEM helps kids learn how to solve problems and think for themselves! It also opens doors to some really cool careers and gives them skills they'll use every day.</div>
                 </div>
                 <div class="faq-item glass-card" onclick="toggleFAQ(this)">
                     <div class="faq-header">
@@ -911,14 +1096,21 @@
                         <h3><span class="faq-emoji">👋</span> Who Can Join Our Programs?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer">All kids are welcome! Our programs are especially designed for young children in communities that don't always have access to STEM resources.</div>
+                    <div class="faq-answer">All kids are welcome! We especially want to reach kids in communities that don't always have STEM programs nearby.</div>
+                </div>
+                <div class="faq-item glass-card" onclick="toggleFAQ(this)">
+                    <div class="faq-header">
+                        <h3><span class="faq-emoji">🌍</span> Why "With Us"?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">"Us" means all of us! Parents, teachers, mentors, communities, and the kids themselves. It takes a village, and everyone plays a part.</div>
                 </div>
                 <div class="faq-item glass-card" onclick="toggleFAQ(this)">
                     <div class="faq-header">
                         <h3><span class="faq-emoji">💪</span> How Can I Help?</h3>
                         <span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer">You can support us by donating, volunteering your time, or spreading the word about our mission. Every little bit makes a difference!</div>
+                    <div class="faq-answer">You can donate, volunteer, partner with us, or just share what we're doing with people you know. Every little bit helps!</div>
                 </div>
             </div>
         </section>
@@ -927,10 +1119,10 @@
         <section class="cta-section">
             <div class="cta-content">
                 <span class="cta-emoji">🌟</span>
-                <h2>Ready to Make a Difference?</h2>
-                <p>Join us in bringing the joy of STEM to kids who need it most. Together, we can inspire the next generation!</p>
+                <h2>Ready to Join the Movement?</h2>
+                <p>Help us build a world where every kid can explore STEM and see themselves in it. Together, we can inspire the next generation!</p>
                 <div class="cta-buttons">
-                    <a href="donate.html" class="btn-white">Donate Now 💜</a>
+                    <a href="donate.html" class="btn-white">Get Involved 💜</a>
                     <a href="contact.html" class="btn-outline-white">Get in Touch ✉️</a>
                 </div>
             </div>
@@ -941,22 +1133,22 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="/images/final_logo.png" alt="Logo">
+                        <img src="images/final_logo.png" alt="Logo">
                         STEM Starts With Us
                     </div>
-                    <p>Dedicated to bringing exciting STEM education to young children in underserved areas. Building tomorrow's innovators, today!</p>
+                    <p>Three Nigerian women, one mission: bring exciting STEM education to every child who needs it. Building tomorrow's innovators, today!</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/stem.starts.with.us/"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/stem-starts-with-us/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/stem.starts.with.us/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/stem-starts-with-us/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="about.html">Our Story</a></li>
-                        <li><a href="products.html">Products</a></li>
-                        <li><a href="events.html">Events</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         <li><a href="donate.html">Donate</a></li>
                     </ul>
                 </div>
@@ -967,18 +1159,39 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 STEM Starts With Us. All rights reserved. Made with 💜 for curious minds!</p>
+                <p>© 2025 STEM Starts With Us. All rights reserved. Made with 💜 for curious minds!</p>
             </div>
         </footer>
     </div>
 
     <script>
+        // FAQ Toggle
         function toggleFAQ(el) {
             document.querySelectorAll('.faq-item').forEach(item => {
                 if (item !== el) item.classList.remove('active');
             });
             el.classList.toggle('active');
         }
+
+        // Mobile Menu
+        function toggleMenu() {
+            document.getElementById('hamburger').classList.toggle('active');
+            document.getElementById('mainNav').classList.toggle('open');
+            document.getElementById('mobileOverlay').classList.toggle('active');
+            document.body.style.overflow = document.getElementById('mainNav').classList.contains('open') ? 'hidden' : '';
+        }
+
+        function closeMenu() {
+            document.getElementById('hamburger').classList.remove('active');
+            document.getElementById('mainNav').classList.remove('open');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close menu on nav link click
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
 
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
@@ -993,7 +1206,7 @@
         document.querySelectorAll('.glass-card').forEach((el, i) => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
-            el.style.transition = `all 0.6s ease ${i * 0.08}s`;
+            el.style.transition = `all 0.6s ease ${i * 0.06}s`;
             observer.observe(el);
         });
     </script>
