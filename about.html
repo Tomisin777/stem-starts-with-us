@@ -426,9 +426,18 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
+        /* Compact footer signup */
+        .footer-signup h4 { font-family: 'Baloo 2', cursive; font-size: 17px; margin-bottom: 10px; }
+        .footer-signup p { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 12px; line-height: 1.5; }
+        .footer-signup-form { display: flex; gap: 8px; }
+        .footer-signup-form input[type="email"] { flex: 1; padding: 10px 14px; border-radius: 50px; border: none; font-size: 13px; font-family: 'Nunito', sans-serif; outline: none; background: rgba(255,255,255,0.12); color: white; min-height: 44px; }
+        .footer-signup-form input[type="email"]::placeholder { color: rgba(255,255,255,0.5); }
+        .footer-signup-form input[type="email"]:focus { background: rgba(255,255,255,0.2); }
+        .footer-signup-form button { background: linear-gradient(135deg, var(--lavender), var(--lavender-dark)); color: white; border: none; padding: 10px 16px; border-radius: 50px; font-size: 13px; font-weight: 800; cursor: pointer; font-family: 'Nunito', sans-serif; transition: all 0.3s ease; white-space: nowrap; min-height: 44px; }
+        .footer-signup-form button:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(167,170,225,0.4); }
         /* Footer */
         footer { background: var(--text-dark); color: white; padding: 70px 60px 35px; }
-        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 50px; }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1.4fr; gap: 40px; margin-bottom: 50px; }
         .footer-brand .logo { font-family: 'Baloo 2', cursive; font-size: 24px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
         .footer-brand .logo img { width: 50px; height: 50px; border-radius: 14px; }
         .footer-brand p { font-size: 15px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; margin-bottom: 20px; }
@@ -456,6 +465,7 @@
             .cta-section { margin: 40px 30px; padding: 60px 30px; }
             .footer-content { grid-template-columns: 1fr; }
             footer { padding: 60px 30px 30px; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -680,6 +690,18 @@
                     <h4>Contact Us</h4>
                     <p><i class="fas fa-envelope"></i> stemstartswithus@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> Baltimore, MD</p>
+                </div>
+                <div class="footer-section footer-signup">
+                    <h4>Stay in the Loop ✨</h4>
+                    <p>Be first to hear when programs launch.</p>
+                    <form class="footer-signup-form" method="POST" action="https://formsubmit.co/stemstartswithus@gmail.com">
+                        <input type="hidden" name="_subject" value="New SSWU signup">
+                        <input type="hidden" name="_next" value="https://stemstartswithus.com/thanks.html">
+                        <input type="hidden" name="_template" value="basic">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="email" name="email" placeholder="your@email.com" required aria-label="Your email address">
+                        <button type="submit">Join 💜</button>
+                    </form>
                 </div>
             </div>
             <div class="footer-bottom">
