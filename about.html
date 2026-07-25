@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Story | STEM Starts With Us</title>
-    <meta name="description" content="Three Nigerian women met at Harvard during a summer program and asked: what if every kid had access to STEM? That question became STEM Starts With Us.">
+    <meta name="description" content="Three Nigerian women met at Harvard and asked: what if every kid had access to STEM from the start? That question became STEM Starts With Us.">
     <meta property="og:title" content="Our Story | STEM Starts With Us">
     <meta property="og:description" content="Born from a question at Harvard. Built to give every child the STEM opportunities we wished we'd had earlier.">
-    <meta property="og:image" content="images/final_logo.png">
+    <meta property="og:image" content="https://stemstartswithus.com/images/final_logo.png">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stemstartswithus.com/about.html">
     <link rel="icon" type="image/png" href="images/final_logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -52,9 +53,11 @@
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23A7AAE1' stroke-width='0.8' opacity='0.5'%3E%3Ccircle cx='20' cy='20' r='6'/%3E%3Ccircle cx='80' cy='60' r='4'/%3E%3Ccircle cx='40' cy='80' r='5'/%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.5; pointer-events: none; }
-        .blob-1 { width: 400px; height: 400px; background: var(--lavender-light); top: 10%; right: -100px; }
-        .blob-2 { width: 350px; height: 350px; background: var(--pink); bottom: 20%; left: -100px; }
+        @keyframes floatBlob1 { 0%,100%{transform:translate(0,0) scale(1);} 33%{transform:translate(30px,-40px) scale(1.05);} 66%{transform:translate(-20px,20px) scale(0.97);} }
+        @keyframes floatBlob2 { 0%,100%{transform:translate(0,0) scale(1);} 33%{transform:translate(-25px,35px) scale(1.04);} 66%{transform:translate(30px,-25px) scale(0.96);} }
+        .blob { position: fixed; border-radius: 50%; filter: blur(70px); opacity: 0.45; pointer-events: none; z-index: 0; }
+        .blob-1 { width: 420px; height: 420px; background: var(--lavender-light); top: 8%; right: -80px; animation: floatBlob1 12s ease-in-out infinite; }
+        .blob-2 { width: 360px; height: 360px; background: var(--pink); bottom: 15%; left: -80px; animation: floatBlob2 15s ease-in-out infinite; }
 
         /* Header */
         header {
@@ -77,12 +80,12 @@
         .logo-text span { color: var(--lavender-dark); }
 
         nav { display: flex; gap: 8px; align-items: center; }
-        nav a { text-decoration: none; color: var(--text-dark); font-size: 15px; font-weight: 700; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; }
+        nav a { text-decoration: none; color: var(--text-dark); font-size: 15px; font-weight: 700; padding: 10px 20px; border-radius: 25px; transition: all 0.3s ease; min-height: 44px; display: flex; align-items: center; }
         nav a:not(.btn-donate):hover, nav a.active { color: var(--purple); background: rgba(167, 170, 225, 0.15); }
         .btn-donate { background: linear-gradient(135deg, var(--lavender), var(--lavender-dark)); color: white !important; padding: 12px 26px; border-radius: 50px; font-weight: 800; box-shadow: 0 4px 15px rgba(167, 170, 225, 0.4); }
         .btn-donate:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(167, 170, 225, 0.5); }
 
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 200; background: none; border: none; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 200; background: none; border: none; min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
         .hamburger span { width: 28px; height: 3px; background: var(--purple); border-radius: 3px; transition: all 0.3s ease; }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
@@ -452,18 +455,19 @@
             .values-grid, .team-grid { grid-template-columns: 1fr; max-width: 400px; }
             .cta-section { margin: 40px 30px; padding: 60px 30px; }
             .footer-content { grid-template-columns: 1fr; }
+            footer { padding: 60px 30px 30px; }
         }
 
         @media (max-width: 768px) {
-            header { padding: 16px 20px; }
+            header { padding: 12px 16px; }
             .hamburger { display: flex; }
             nav {
                 position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh;
                 background: white; flex-direction: column; justify-content: center; align-items: center;
-                gap: 16px; transition: right 0.4s ease; box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1); z-index: 150;
+                gap: 8px; transition: right 0.4s ease; box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1); z-index: 150;
             }
             nav.open { right: 0; }
-            nav a { font-size: 18px; padding: 14px 30px; }
+            nav a { font-size: 18px; padding: 14px 30px; min-height: 52px; width: 100%; justify-content: center; }
             .mobile-overlay {
                 position: fixed; top: 0; left: 0; width: 100%; height: 100%;
                 background: rgba(0, 0, 0, 0.4); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
@@ -472,7 +476,18 @@
             .page-hero h1 { font-size: 32px; }
             .quote-card { padding: 35px 25px; }
             .quote-card blockquote { font-size: 20px; }
-            footer { padding: 50px 20px 30px; }
+            footer { padding: 50px 16px 30px; }
+        }
+
+        @media (max-width: 430px) {
+            header { padding: 10px 12px; }
+            .logo-text { font-size: 18px; }
+            .logo-img { width: 44px; height: 44px; }
+            .page-hero { padding: 48px 16px; }
+            .page-hero h1 { font-size: 26px; }
+            .narrative-section, .values-section, .team-section, .quote-section { padding: 40px 16px; }
+            .cta-section { margin: 20px 16px; padding: 40px 16px; }
+            footer { padding: 40px 16px 20px; }
         }
     </style>
 </head>
@@ -483,14 +498,14 @@
         <div class="mobile-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
 
         <header>
-            <div class="logo-section" onclick="window.location.href='index.html'">
-                <img src="images/final_logo.png" alt="STEM Starts With Us" class="logo-img">
+            <a class="logo-section" href="index.html" aria-label="STEM Starts With Us — go to homepage">
+                <img src="images/final_logo.png" alt="STEM Starts With Us logo" class="logo-img">
                 <div class="logo-text">STEM Starts <span>With Us</span></div>
-            </div>
-            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+            </a>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mainNav">
                 <span></span><span></span><span></span>
             </button>
-            <nav id="mainNav">
+            <nav id="mainNav" role="navigation" aria-label="Main navigation">
                 <a href="about.html" class="active">Our Story</a>
                 <a href="programs.html">Programs</a>
                 <a href="contact.html">Contact</a>
@@ -515,7 +530,7 @@
                         <p style="margin-top: 12px;"><strong>It changed everything.</strong></p>
                     </div>
                     <div class="narrative-image glass-card">
-                        <img src="images/group3.png" alt="The founders">
+                        <img src="images/group3.png" alt="The three founders of STEM Starts With Us at Harvard">
                     </div>
                 </div>
 
@@ -526,7 +541,7 @@
                         <p>But we also realized something: <strong>so many kids never get that chance</strong>, simply because no one showed them the path. We asked ourselves: <em>"What if we had these opportunities earlier? And how can we give that to other kids?"</em></p>
                     </div>
                     <div class="narrative-image glass-card">
-                        <img src="images/stem.jpg" alt="STEM learning">
+                        <img src="images/stem.jpg" alt="A child exploring a hands-on STEM activity">
                     </div>
                 </div>
 
@@ -537,7 +552,7 @@
                         <p>That question became <strong>STEM Starts With Us</strong>. We set out to bring hands-on STEM education to kids who don't always get the chance. Through kits, storybooks, workshops, and eventually podcasts and mentorship, we're working to make sure every child can see themselves in STEM.</p>
                     </div>
                     <div class="narrative-image glass-card">
-                        <img src="images/kids.jpg" alt="Kids in STEM">
+                        <img src="images/kids.jpg" alt="Children excited about a STEM workshop">
                     </div>
                 </div>
 
@@ -548,7 +563,7 @@
                         <p>STEM Starts With <strong>Us</strong>, and "us" is bigger than the three of us. It's parents who want more for their children. Teachers who go the extra mile. Mentors who share their journey. Communities that come together. <strong>STEM starts with all of us.</strong></p>
                     </div>
                     <div class="narrative-image glass-card">
-                        <img src="images/final_logo.png" alt="Our community">
+                        <img src="images/final_logo.png" alt="STEM Starts With Us logo representing our wider community">
                     </div>
                 </div>
             </div>
@@ -597,7 +612,7 @@
             <div class="team-grid">
                 <div class="team-card glass-card">
                     <div class="team-photo">
-                        <img src="images/tomi.jpeg" alt="Tomisin Adebari">
+                        <img src="images/tomi.jpeg" alt="Tomisin Adebari, Co-Founder of STEM Starts With Us">
                     </div>
                     <div class="team-info">
                         <h3>Tomisin Adebari</h3>
@@ -607,7 +622,7 @@
                 </div>
                 <div class="team-card glass-card">
                     <div class="team-photo">
-                        <img src="images/joy.jpeg" alt="Olayimika Adeyemi">
+                        <img src="images/joy.jpeg" alt="Olayimika Adeyemi, Co-Founder of STEM Starts With Us">
                     </div>
                     <div class="team-info">
                         <h3>Olayimika Adeyemi</h3>
@@ -617,7 +632,7 @@
                 </div>
                 <div class="team-card glass-card">
                     <div class="team-photo">
-                        <img src="images/Tomisin.jpg" alt="Oluwatomisin Salami">
+                        <img src="images/Tomisin.jpg" alt="Oluwatomisin Salami, Co-Founder of STEM Starts With Us">
                     </div>
                     <div class="team-info">
                         <h3>Oluwatomisin Salami</h3>
@@ -642,14 +657,14 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">
-                        <img src="images/final_logo.png" alt="Logo">
+                        <img src="images/final_logo.png" alt="STEM Starts With Us logo">
                         STEM Starts With Us
                     </div>
                     <p>Three Nigerian women, one mission: bring exciting STEM education to every child who needs it.</p>
                     <div class="social-links">
-                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://www.instagram.com/stem.starts.with.us/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/stem-starts-with-us/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.instagram.com/stem.starts.with.us/" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/stem-starts-with-us/" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -675,16 +690,21 @@
 
     <script>
         function toggleMenu() {
-            document.getElementById('hamburger').classList.toggle('active');
-            document.getElementById('mainNav').classList.toggle('open');
-            document.getElementById('mobileOverlay').classList.toggle('active');
-            document.body.style.overflow = document.getElementById('mainNav').classList.contains('open') ? 'hidden' : '';
+            const btn = document.getElementById('hamburger');
+            const nav = document.getElementById('mainNav');
+            const overlay = document.getElementById('mobileOverlay');
+            const isOpen = nav.classList.toggle('open');
+            btn.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            btn.setAttribute('aria-expanded', isOpen);
         }
         function closeMenu() {
             document.getElementById('hamburger').classList.remove('active');
             document.getElementById('mainNav').classList.remove('open');
             document.getElementById('mobileOverlay').classList.remove('active');
             document.body.style.overflow = '';
+            document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
         }
         document.querySelectorAll('nav a').forEach(link => { link.addEventListener('click', () => setTimeout(closeMenu, 300)); });
 
