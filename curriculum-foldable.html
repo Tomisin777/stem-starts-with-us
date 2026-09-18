@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEAM Careers Foldable | STEM Starts With Us</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --lavender: #A7AAE1;
+            --lavender-light: #e6e7f8;
+            --purple: #6B5B95;
+            --dark: #4a4a6a;
+            --pink: #FDEDED;
+            --sky: #AEDEFC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; background: #f0f0f0; color: var(--dark); }
+
+        /* The Printable Area */
+        .page {
+            width: 11in; height: 8.5in; /* US Letter Landscape */
+            background: white;
+            margin: 20px auto;
+            display: flex;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* The 3 Columns (Panels) per page */
+        .panel {
+            width: 33.333%;
+            height: 100%;
+            padding: 0.4in;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px dashed #ccc; /* Fold line guide */
+            position: relative;
+        }
+        .panel:last-child { border-right: none; }
+
+        h1, h2, h3 { font-family: 'Baloo 2', cursive; color: var(--purple); line-height: 1.2; }
+        p { font-size: 11pt; line-height: 1.5; margin-bottom: 12px; }
+
+        /* Cover Panel styles */
+        .cover-panel { background: linear-gradient(135deg, var(--lavender-light), var(--lavender)); text-align: center; justify-content: center; }
+        .cover-panel h1 { font-size: 48px; color: white; margin: 20px 0; text-shadow: 2px 2px 0px var(--purple); }
+        .cover-logo { width: 100px; height: 100px; border-radius: 20px; margin: 0 auto; display: block; }
+        .cover-tagline { font-size: 16pt; font-weight: 800; color: var(--purple); }
+
+        /* Career Blocks */
+        .career-block { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 2px solid var(--lavender-light); position: relative; }
+        .career-block.pink { border-color: var(--pink); background: #fffcfc; }
+        .career-block.sky { border-color: var(--sky); background: #f4fafe; }
+        
+        .career-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .career-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--lavender-light); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--purple); flex-shrink: 0; }
+        .career-block h3 { font-size: 16pt; margin: 0; }
+        .career-letter { position: absolute; top: 10px; right: 15px; font-family: 'Baloo 2'; font-size: 24pt; font-weight: 800; color: rgba(167, 170, 225, 0.3); line-height: 1; }
+
+        .career-block p { font-size: 10pt; margin-bottom: 8px; }
+        .try-it { background: var(--lavender-light); padding: 8px; border-radius: 8px; font-size: 9pt; font-weight: 700; color: var(--purple); }
+
+        /* Info Panel */
+        .info-box { background: var(--pink); padding: 20px; border-radius: 15px; margin-top: auto; text-align: center; }
+        
+        /* Interactive section */
+        .draw-box { border: 2px dashed var(--purple); flex-grow: 1; border-radius: 12px; margin-top: 10px; display: flex; align-items: center; justify-content: center; color: var(--lavender); font-weight: 700; font-size: 14pt; }
+
+        @media print {
+            body { background: white; margin: 0; }
+            .page { margin: 0; box-shadow: none; border: none; page-break-after: always; }
+            .panel { border-right: 1px dashed rgba(0,0,0,0.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: OUTSIDE OF FOLDABLE -->
+    <div class="page">
+        <!-- Inside Flap (Folds in first) -->
+        <div class="panel">
+            <h2>What is S.T.E.A.M.? 🚀</h2>
+            <p style="margin-top:15px; font-weight:700; font-size:12pt; color:var(--purple);">
+                S - Science<br>
+                T - Technology<br>
+                E - Engineering<br>
+                A - Arts<br>
+                M - Mathematics
+            </p>
+            <p style="margin-top:20px;">Did you know that talent is everywhere, but opportunity is not? </p>
+            <p>A child cannot choose a future they have never seen. That's why we made this guide!</p>
+            <p>Open this up to discover amazing careers that use STEAM every single day. Which one will YOU choose?</p>
+            
+            <div class="info-box" style="background:var(--sky); margin-top:40px;">
+                <h3 style="font-size:14pt;">Fun Fact! 💡</h3>
+                <p style="font-size:10pt; margin:0;">You don't have to pick just one! The best inventors mix science, math, AND art together!</p>
+            </div>
+        </div>
+
+        <!-- Back Cover (Middle) -->
+        <div class="panel" style="text-align: center; justify-content: space-between;">
+            <div>
+                <img src="images/final_logo.png" style="width:60px; border-radius:12px; margin-bottom:15px;" alt="Logo">
+                <h2>STEM Starts With Us</h2>
+                <p style="font-size:10pt; margin-top:15px;">We are a student-led initiative founded by three Nigerian women who believe every child deserves the chance to discover what they're capable of.</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>Join the Family 💜</h3>
+                <p style="font-size:10pt;">Want to do more hands-on activities?</p>
+                <p style="font-weight:800; color:var(--purple); margin:0;">stemstartswithus.com</p>
+                <p style="font-size:10pt; margin-top:10px;">@stem.starts.with.us</p>
+            </div>
+        </div>
+
+        <!-- Front Cover (Folds on top) -->
+        <div class="panel cover-panel">
+            <img src="images/final_logo.png" class="cover-logo" alt="SSWU Logo">
+            <h1>My STEAM Future</h1>
+            <p class="cover-tagline">An exploration guide for young innovators!</p>
+            <p style="color: white; margin-top: 30px; font-weight: 700;">By STEM Starts With Us</p>
+        </div>
+    </div>
+
+    <!-- PAGE 2: INSIDE OF FOLDABLE (Spreads open) -->
+    <div class="page">
+        <!-- Left Panel -->
+        <div class="panel">
+            <div class="career-block sky">
+                <span class="career-letter">S</span>
+                <div class="career-header">
+                    <div class="career-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Food Scientist</h3>
+                </div>
+                <p><strong>What they do:</strong> Mix chemistry and biology to invent new flavors of chips, candies, and healthy snacks!</p>
+                <div class="try-it">🧪 Try it: Mix lemon juice, sugar, and baking soda. Watch the bubbles and taste your custom soda!</div>
+            </div>
+
+            <div class="career-block">
+                <span class="career-letter">T</span>
+                <div class="career-header">
+                    <div class="career-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Game Designer</h3>
+                </div>
+                <p><strong>What they do:</strong> Write code and logic to decide how your favorite characters jump, run, and win.</p>
+                <div class="try-it">💻 Try it: Write exact instructions (code) for a friend to walk across the room with their eyes closed!</div>
+            </div>
+        </div>
+
+        <!-- Center Panel -->
+        <div class="panel">
+            <div class="career-block pink">
+                <span class="career-letter">E</span>
+                <div class="career-header">
+                    <div class="career-icon"><i class="fas fa-roller-coaster"></i></div>
+                    <h3>Theme Park Engineer</h3>
+                </div>
+                <p><strong>What they do:</strong> Use physics to build super fast, super safe rollercoasters that don't fly off the tracks.</p>
+                <div class="try-it">🎢 Try it: Tape paper towel tubes together to build the longest marble run possible!</div>
+            </div>
+
+            <div class="career-block sky">
+                <span class="career-letter">A</span>
+                <div class="career-header">
+                    <div class="career-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Animation Artist</h3>
+                </div>
+                <p><strong>What they do:</strong> Combine art and computers to bring drawings to life in your favorite movies.</p>
+                <div class="try-it">🎨 Try it: Draw a character on the corner of 10 notebook pages. Change it slightly on each page and flip them fast!</div>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="panel">
+            <div class="career-block">
+                <span class="career-letter">M</span>
+                <div class="career-header">
+                    <div class="career-icon"><i class="fas fa-basketball-ball"></i></div>
+                    <h3>Sports Statistician</h3>
+                </div>
+                <p><strong>What they do:</strong> Use math and data to tell coaches which player is most likely to make the winning shot!</p>
+                <div class="try-it">📐 Try it: Toss 10 balled-up paper "basketballs" into a bin. Count how many you make. That's your shooting percentage!</div>
+            </div>
+
+            <h3 style="margin-top:15px; font-size:14pt;">Draw Yourself!</h3>
+            <p style="font-size:10pt;">What do YOU want to be when you grow up? Draw it here!</p>
+            <div class="draw-box">
+                [ Draw Here ]
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
